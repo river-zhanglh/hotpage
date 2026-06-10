@@ -1,0 +1,62 @@
+{
+  "generatedAt": "2026-06-10T12:00:00.000Z",
+  "platforms": [
+    {
+      "source": "weibo",
+      "sourceName": "微博",
+      "listName": "热搜",
+      "status": "success",
+      "updatedAt": "2026-06-10T11:58:30.000Z",
+      "items": [
+        { "rank": 1, "title": "高考作文讨论升温", "url": "https://s.weibo.com/weibo?q=%E9%AB%98%E8%80%83%E4%BD%9C%E6%96%87", "heat": "1451364" },
+        { "rank": 2, "title": "端午假期出行预测", "url": "https://s.weibo.com/weibo?q=%E7%AB%AF%E5%8D%88%E5%87%BA%E8%A1%8C", "heat": "982340" },
+        { "rank": 3, "title": "毕业季租房提醒", "url": "https://s.weibo.com/weibo?q=%E6%AF%95%E4%B8%9A%E5%AD%A3%E7%A7%9F%E6%88%BF", "heat": "875210" },
+        { "rank": 4, "title": "国产电影新片定档", "url": "https://s.weibo.com/weibo?q=%E5%9B%BD%E4%BA%A7%E7%94%B5%E5%BD%B1", "heat": "759821" },
+        { "rank": 5, "title": "多地发布高温预警", "url": "https://s.weibo.com/weibo?q=%E9%AB%98%E6%B8%A9%E9%A2%84%E8%AD%A6", "heat": "693402" },
+        { "rank": 6, "title": "新能源汽车销量增长", "url": "https://s.weibo.com/weibo?q=%E6%96%B0%E8%83%BD%E6%BA%90%E6%B1%BD%E8%BD%A6", "heat": "620118" },
+        { "rank": 7, "title": "AI 工具进入办公场景", "url": "https://s.weibo.com/weibo?q=AI%E5%B7%A5%E5%85%B7", "heat": "588904" },
+        { "rank": 8, "title": "夏季饮食安全", "url": "https://s.weibo.com/weibo?q=%E5%A4%8F%E5%AD%A3%E9%A5%AE%E9%A3%9F", "heat": "523671" },
+        { "rank": 9, "title": "城市骑行路线推荐", "url": "https://s.weibo.com/weibo?q=%E5%9F%8E%E5%B8%82%E9%AA%91%E8%A1%8C", "heat": "482119" },
+        { "rank": 10, "title": "职场新人沟通技巧", "url": "https://s.weibo.com/weibo?q=%E8%81%8C%E5%9C%BA%E6%96%B0%E4%BA%BA", "heat": "431002" }
+      ]
+    },
+    {
+      "source": "zhihu",
+      "sourceName": "知乎",
+      "listName": "热搜词",
+      "status": "success",
+      "updatedAt": "2026-06-10T11:56:00.000Z",
+      "items": [
+        { "rank": 1, "title": "如何评价今年高考作文", "url": "https://www.zhihu.com/search?type=content&q=%E9%AB%98%E8%80%83%E4%BD%9C%E6%96%87" },
+        { "rank": 2, "title": "年轻人为什么开始重视体检", "url": "https://www.zhihu.com/search?type=content&q=%E4%BD%93%E6%A3%80" },
+        { "rank": 3, "title": "远程办公如何提高效率", "url": "https://www.zhihu.com/search?type=content&q=%E8%BF%9C%E7%A8%8B%E5%8A%9E%E5%85%AC" },
+        { "rank": 4, "title": "AI 编程会改变软件开发吗", "url": "https://www.zhihu.com/search?type=content&q=AI%E7%BC%96%E7%A8%8B" },
+        { "rank": 5, "title": "毕业后第一份工作怎么选", "url": "https://www.zhihu.com/search?type=content&q=%E7%AC%AC%E4%B8%80%E4%BB%BD%E5%B7%A5%E4%BD%9C" },
+        { "rank": 6, "title": "夏天如何保持运动习惯", "url": "https://www.zhihu.com/search?type=content&q=%E5%A4%8F%E5%A4%A9%E8%BF%90%E5%8A%A8" },
+        { "rank": 7, "title": "如何判断租房合同风险", "url": "https://www.zhihu.com/search?type=content&q=%E7%A7%9F%E6%88%BF%E5%90%88%E5%90%8C" },
+        { "rank": 8, "title": "城市通勤成本怎么算", "url": "https://www.zhihu.com/search?type=content&q=%E9%80%9A%E5%8B%A4%E6%88%90%E6%9C%AC" },
+        { "rank": 9, "title": "学习英语口语的方法", "url": "https://www.zhihu.com/search?type=content&q=%E8%8B%B1%E8%AF%AD%E5%8F%A3%E8%AF%AD" },
+        { "rank": 10, "title": "周末短途旅行推荐", "url": "https://www.zhihu.com/search?type=content&q=%E7%9F%AD%E9%80%94%E6%97%85%E8%A1%8C" }
+      ]
+    },
+    {
+      "source": "bilibili",
+      "sourceName": "B 站",
+      "listName": "热门",
+      "status": "success",
+      "updatedAt": "2026-06-10T11:54:30.000Z",
+      "items": [
+        { "rank": 1, "title": "用 10 分钟复盘一次产品发布", "url": "https://www.bilibili.com/video/BV1mock001", "heat": "1379425" },
+        { "rank": 2, "title": "这届毕业生的第一周工作日记", "url": "https://www.bilibili.com/video/BV1mock002", "heat": "1098231" },
+        { "rank": 3, "title": "夏日厨房里的三个快手菜", "url": "https://www.bilibili.com/video/BV1mock003", "heat": "985421" },
+        { "rank": 4, "title": "从零搭建一个个人网站", "url": "https://www.bilibili.com/video/BV1mock004", "heat": "851210" },
+        { "rank": 5, "title": "城市骑行第一视角", "url": "https://www.bilibili.com/video/BV1mock005", "heat": "802674" },
+        { "rank": 6, "title": "AI 工具到底能帮我做什么", "url": "https://www.bilibili.com/video/BV1mock006", "heat": "744900" },
+        { "rank": 7, "title": "一小时整理房间挑战", "url": "https://www.bilibili.com/video/BV1mock007", "heat": "688302" },
+        { "rank": 8, "title": "高效阅读新闻的方法", "url": "https://www.bilibili.com/video/BV1mock008", "heat": "631220" },
+        { "rank": 9, "title": "通勤路上的播客清单", "url": "https://www.bilibili.com/video/BV1mock009", "heat": "584310" },
+        { "rank": 10, "title": "给新手的软件工程路线图", "url": "https://www.bilibili.com/video/BV1mock010", "heat": "530118" }
+      ]
+    }
+  ]
+}
