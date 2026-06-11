@@ -8,7 +8,7 @@ export function Layout({ children }: LayoutProps) {
   return (
     <div className="app-shell">
       <header className="topbar">
-        <div>
+        <div className="topbar-title">
           <p className="eyebrow">Public Hotlist Monitor</p>
           <h1>今日热搜</h1>
         </div>
@@ -16,7 +16,9 @@ export function Layout({ children }: LayoutProps) {
       </header>
       <main>{children}</main>
       <footer className="footer">
-        数据来源于公开页面或公开接口。本项目仅用于全栈学习与非商用演示。
+        <span>个人全栈学习项目，非官方服务。</span>
+        <span>数据来源于各平台公开信息，更新频率约 5 分钟。</span>
+        <span>如有侵权或违规，请联系 contact@example.com。</span>
       </footer>
     </div>
   );

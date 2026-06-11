@@ -16,7 +16,17 @@ const loadingCards: Array<{ source: HotSource; sourceName: string; listName: str
 ];
 
 export function Home() {
-  const { data, pageState, reload, retryingSources, retryPlatform } = useHotList();
+  const {
+    data,
+    isReloading,
+    isRefreshing,
+    pageState,
+    refresh,
+    refreshError,
+    reload,
+    retryingSources,
+    retryPlatform,
+  } = useHotList();
 
   if (pageState === 'loading') {
     return (
@@ -40,8 +50,17 @@ export function Home() {
     return (
       <div className="page-state page-state--error">
         <p>热点数据加载失败，请稍后重试。</p>
-        <button type="button" onClick={() => void reload()}>
-          重新加载
+        <button
+          aria-busy={isReloading}
+          className={`refresh-button${isReloading ? ' refresh-button--loading' : ''}`}
+          disabled={isReloading}
+          onClick={() => void reload()}
+          type="button"
+        >
+          <span className="refresh-button__icon" aria-hidden="true">
+            ↻
+          </span>
+          <span>{isReloading ? '加载中' : '重新加载'}</span>
         </button>
       </div>
     );
@@ -62,11 +81,31 @@ export function Home() {
           <span>每个平台</span>
           <strong>Top 10</strong>
         </div>
-        <div>
-          <span>页面生成</span>
-          <strong>{formatGeneratedAt(data.generatedAt)}</strong>
+        <div className="summary-strip__action-cell">
+          <span className="summary-strip__metric">
+            <span>页面生成</span>
+            <strong>{formatGeneratedAt(data.generatedAt)}</strong>
+          </span>
+          <button
+            aria-busy={isRefreshing}
+            className={`refresh-button${isRefreshing ? ' refresh-button--loading' : ''}`}
+            disabled={isRefreshing}
+            onClick={() => void refresh()}
+            type="button"
+          >
+            <span className="refresh-button__icon" aria-hidden="true">
+              ↻
+            </span>
+            <span>{isRefreshing ? '更新中' : '重新加载'}</span>
+          </button>
         </div>
       </section>
+
+      {refreshError ? (
+        <div className="refresh-notice" role="status">
+          {refreshError}
+        </div>
+      ) : null}
 
       <section className="card-grid" aria-label="热点列表">
         {data.platforms.map((platform) =>
