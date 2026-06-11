@@ -1,6 +1,6 @@
 # 项目共享上下文
 
-最后更新：2026-06-11
+最后更新：2026-06-12
 
 ## 当前阶段
 
@@ -14,6 +14,7 @@
 - Day 17 已完成：单平台失败模拟方案、单平台重试、全页重新加载、刷新 loading 反馈和合规页脚已完成。测试与方案记录见 `docs/qa/day17-resilience-compliance.md`。
 - Day 18 已完成：站点 favicon/metadata、卡片 hover/focus 体验、部署前检查表和主路径收尾记录已完成。记录见 `docs/qa/day18-polish-freeze.md`，部署前检查表见 `docs/deployment-checklist.md`。
 - Day 19 已完成：README Deploy 章节、`CLIENT_ORIGIN` CORS 配置、前端构建、后端 `npm start` 和 `/api/health` 检查已完成。记录见 `docs/qa/day19-deployment-prep.md`。
+- Day 20 已完成：Vercel 前端和 Railway 后端已部署上线，三卡片显示、标题跳转、重新加载按钮和线上 CORS/API 链路均已验收通过。记录见 `docs/qa/day20-online-deployment.md`。
 
 ## 已确认共识
 
@@ -35,9 +36,9 @@
 
 ## 当前下一步
 
-1. 进入 Day 20：部署上线，优先完成前端与后端的公网 HTTPS 部署。
+1. 进入 Day 21：部署后收尾，整理最终 README、上线地址、已知限制和后续优化清单。
 2. 继续保持前端不直连微博、知乎、B 站等上游平台 API。
-3. 涉及接口、缓存、数据源、页面状态或部署配置的修改，需要回归 `docs/qa/` 中 Day16-Day19 的关键场景。
+3. 涉及接口、缓存、数据源、页面状态或部署配置的修改，需要回归 `docs/qa/` 中 Day16-Day20 的关键场景。
 
 ## 正式文档导航
 

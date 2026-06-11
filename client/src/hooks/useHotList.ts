@@ -36,8 +36,13 @@ function readMockScenario(): MockScenario {
   return 'success';
 }
 
+function readInitialRefresh() {
+  return new URLSearchParams(window.location.search).get('refresh') === '1';
+}
+
 export function useHotList() {
   const scenario = useMemo(() => readMockScenario(), []);
+  const shouldRefreshOnInitialLoad = useMemo(() => readInitialRefresh(), []);
   const [pageState, setPageState] = useState<PageState>('loading');
   const [data, setData] = useState<HotResponse | null>(null);
   const [isRefreshing, setIsRefreshing] = useState(false);
@@ -52,14 +57,16 @@ export function useHotList() {
     setRefreshError(null);
 
     try {
-      const response = await fetchAllHot(scenario);
+      const response = await fetchAllHot(scenario, {
+        refresh: shouldRefreshOnInitialLoad,
+      });
       setData(response);
       setPageState('success');
     } catch {
       setData(null);
       setPageState('error');
     }
-  }, [scenario]);
+  }, [scenario, shouldRefreshOnInitialLoad]);
 
   const reloadHotData = useCallback(async () => {
     const startedAt = Date.now();

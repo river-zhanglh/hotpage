@@ -2,6 +2,10 @@ import type { HotPlatform, HotResponse, HotSource } from '../types/hot';
 
 export type MockScenario = 'success' | 'platform-error' | 'empty' | 'stale' | 'page-error';
 
+interface FetchAllHotOptions {
+  refresh?: boolean;
+}
+
 const apiBase = import.meta.env.VITE_API_BASE ?? '';
 
 function buildApiUrl(path: string, params?: Record<string, string>) {
@@ -24,10 +28,21 @@ async function requestJson<T>(path: string, params?: Record<string, string>): Pr
   return response.json() as Promise<T>;
 }
 
-export function fetchAllHot(scenario: MockScenario = 'success') {
-  const params = scenario === 'success' ? undefined : { mock: scenario };
+export function fetchAllHot(scenario: MockScenario = 'success', options: FetchAllHotOptions = {}) {
+  const params: Record<string, string> = {};
 
-  return requestJson<HotResponse>('/api/hot', params);
+  if (scenario !== 'success') {
+    params.mock = scenario;
+  }
+
+  if (options.refresh) {
+    params.refresh = '1';
+  }
+
+  return requestJson<HotResponse>(
+    '/api/hot',
+    Object.keys(params).length > 0 ? params : undefined,
+  );
 }
 
 export function fetchHotPlatform(source: HotSource) {
