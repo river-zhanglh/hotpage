@@ -5,7 +5,7 @@
 ## 1. 构建检查
 
 - 前端：在 `client` 目录运行 `npm run build`，确认 `client/dist/` 生成。
-- 后端：在 `server` 目录运行 `npm run dev` 或部署平台启动命令，确认 `/api/health` 返回 `{ "ok": true }`。
+- 后端：在 `server` 目录运行 `npm start` 或部署平台启动命令，确认 `/api/health` 返回 `{ "ok": true }`。
 - 本地联调：前端页面能通过 `/api/hot` 获取三平台数据。
 
 ## 2. 端口检查
@@ -25,8 +25,9 @@
 ## 4. 后端环境变量
 
 - `PORT`：后端监听端口，默认 `3001`。
-- `HOST`：后端监听地址，本地默认 `127.0.0.1`。
+- `HOST`：后端监听地址，默认 `0.0.0.0`；本地和多数部署平台通常都不需要设置。
 - `CACHE_TTL`：缓存 TTL，默认 `300` 秒，MVP 阶段限制在 `300-600` 秒。
+- `CLIENT_ORIGIN`：生产前端域名，用于 CORS 放行，例如 `https://your-hotpage.vercel.app`。
 - `WEIBO_HOT_URL`：微博上游地址，仅测试或故障模拟时覆盖。
 - `ZHIHU_TOP_SEARCH_URL`：知乎上游地址，仅测试或故障模拟时覆盖。
 - `BILIBILI_POPULAR_URL`：B 站上游地址，仅测试或故障模拟时覆盖。
