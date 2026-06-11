@@ -71,6 +71,63 @@ proxy: {
 
 前端代码只请求自建后端，不直接请求微博、知乎、B 站等上游平台 API。
 
+## Deploy
+
+部署前先完成 [部署前检查表](docs/deployment-checklist.md)。
+
+### 前端部署
+
+推荐把 `client` 作为前端项目根目录部署到 Vercel 或其他静态站点平台：
+
+- Root Directory：`client`
+- Build Command：`npm run build`
+- Output Directory：`dist`
+- Framework Preset：Vite
+
+如果前端和后端同域部署，可以不设置 `VITE_API_BASE`，让前端继续请求相对路径 `/api/hot`。
+
+如果前端和后端分域部署，需要在前端平台设置：
+
+```bash
+VITE_API_BASE=https://your-api.example.com
+```
+
+`VITE_API_BASE` 应填写自建后端地址，不应填写微博、知乎、B 站等上游平台地址。
+
+### 后端部署
+
+推荐把 `server` 作为后端项目根目录部署到 Railway、Render 或其他 Node.js 平台：
+
+- Start Command：`npm start`
+- Health Check：`/api/health`
+
+常用环境变量：
+
+| 变量 | 说明 |
+|---|---|
+| `PORT` | 后端监听端口，通常由部署平台自动注入 |
+| `HOST` | 后端监听地址，默认 `0.0.0.0`；多数平台可不设置 |
+| `CACHE_TTL` | 缓存秒数，默认 `300`，MVP 阶段限制在 `300-600` |
+| `CLIENT_ORIGIN` | 生产前端域名，用于 CORS 放行 |
+| `WEIBO_HOT_URL` | 微博上游地址，通常不需要覆盖 |
+| `ZHIHU_TOP_SEARCH_URL` | 知乎上游地址，通常不需要覆盖 |
+| `BILIBILI_POPULAR_URL` | B 站上游地址，通常不需要覆盖 |
+
+前后端分域部署时，后端需要设置：
+
+```bash
+CLIENT_ORIGIN=https://your-hotpage.vercel.app
+```
+
+这样浏览器从前端域名请求后端 API 时，后端会通过 CORS 放行该来源。
+
+### 部署后验证
+
+- 打开后端 `/api/health`，确认返回 `{ "ok": true }`。
+- 打开前端页面，确认三张平台卡片能加载。
+- 点击“重新加载”，确认按钮出现 `更新中` 状态。
+- 检查浏览器 Network，确认前端请求的是自建后端 `/api/hot` 或 `VITE_API_BASE`，不是上游平台 API。
+
 ## 数据来源说明
 
 当前 MVP 由后端 adapter 请求各平台 JSON 接口，再统一映射为 `/api/hot` 响应结构：

@@ -12,7 +12,13 @@ import { defaultTtlSec, getCache, getStaleCache, setCache } from './utils/cache.
 
 const app = express();
 const port = Number(process.env.PORT ?? 3001);
-const host = process.env.HOST ?? '127.0.0.1';
+const host = process.env.HOST ?? '0.0.0.0';
+const clientOrigin = process.env.CLIENT_ORIGIN;
+const allowedOrigins = [
+  'http://localhost:5173',
+  'http://127.0.0.1:5173',
+  ...(clientOrigin ? [clientOrigin] : []),
+];
 const hotSources = Array.from(supportedSources);
 const platformMessages = {
   weibo: {
@@ -137,7 +143,7 @@ async function getPlatformWithCache(source, refresh = false) {
 
 app.use(
   cors({
-    origin: ['http://localhost:5173', 'http://127.0.0.1:5173'],
+    origin: allowedOrigins,
   }),
 );
 app.use(express.json());

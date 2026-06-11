@@ -13,6 +13,7 @@
 - Day 16 手动测试已完成：三平台展示、标题跳转、排名热度、更新时间、单平台失败、缓存期更新时间、移动端布局、页脚合规、软/硬刷新和后端挂掉不白屏均已验证通过。测试记录见 `docs/qa/day16-manual-test.md`。
 - Day 17 已完成：单平台失败模拟方案、单平台重试、全页重新加载、刷新 loading 反馈和合规页脚已完成。测试与方案记录见 `docs/qa/day17-resilience-compliance.md`。
 - Day 18 已完成：站点 favicon/metadata、卡片 hover/focus 体验、部署前检查表和主路径收尾记录已完成。记录见 `docs/qa/day18-polish-freeze.md`，部署前检查表见 `docs/deployment-checklist.md`。
+- Day 19 已完成：README Deploy 章节、`CLIENT_ORIGIN` CORS 配置、前端构建、后端 `npm start` 和 `/api/health` 检查已完成。记录见 `docs/qa/day19-deployment-prep.md`。
 
 ## 已确认共识
 
@@ -34,9 +35,9 @@
 
 ## 当前下一步
 
-1. 进入 Day 19-21：部署缓冲阶段，先按 `docs/deployment-checklist.md` 完成部署前检查。
+1. 进入 Day 20：部署上线，优先完成前端与后端的公网 HTTPS 部署。
 2. 继续保持前端不直连微博、知乎、B 站等上游平台 API。
-3. 涉及接口、缓存、数据源或页面状态的修改，需要回归 `docs/qa/day16-manual-test.md`、`docs/qa/day17-resilience-compliance.md` 和 `docs/qa/day18-polish-freeze.md` 中的关键场景。
+3. 涉及接口、缓存、数据源、页面状态或部署配置的修改，需要回归 `docs/qa/` 中 Day16-Day19 的关键场景。
 
 ## 正式文档导航
 
