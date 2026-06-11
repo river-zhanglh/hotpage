@@ -157,8 +157,11 @@ MVP 主用户是想快速扫热点的普通访客，包括学生、上班族和�
 | 2026-06-08 | 知乎：https://www.zhihu.com/topsearch | 数据源 | 页面可不依赖用户登录看到热榜排名和链接；未观察到稳定热度值；点击具体链接后需要登录态 | 页面可访问；后端请求和字段转换待验证 | 待定 | 页面链接；页面观察 | 验证后端请求、JSON 来源和字段映射 |
 | 2026-06-08 | B 站：https://www.bilibili.com/v/popular/all | 数据源 | 页面可不依赖用户登录看到热门内容、链接、播放量/弹幕数；点击具体链接不一定需要登录态 | 页面可访问；后端请求和字段转换待验证 | 待定 | 页面链接；页面观察 | 验证后端请求、JSON 来源和字段映射 |
 | 2026-06-08 | 微博：https://weibo.com/ajax/side/hotSearch | 数据源 | 用 `curl` 模拟后端请求；首次无 Referer 返回 Forbidden，补充 Referer 后返回 JSON | 可后端请求；可解析 `data.realtime`；需带合理 User-Agent 和 Referer | 是（初验） | JSON 响应含 `word`、`realpos`、`num` | 二次复测；实现时封装请求头和失败处理 |
+| 2026-06-11 | 微博：https://weibo.com/ajax/side/hotSearch | 数据源接入 | 用 Node `fetch` 二次复测并接入 `server/services/weibo.js`；请求头包含移动端 User-Agent 和 `Referer: https://weibo.com/` | 返回 HTTP 200；`data.realtime` 约 50 条；已解析 Top 10 到 `rank/title/url/heat` | 是（已接入） | `/api/hot/weibo?refresh=1` 返回真实微博热搜；缓存命中日志含 `[cache hit] hot:weibo` | 后续继续观察稳定性；失败时走 `stale/error` |
 | 2026-06-08 | 知乎：https://www.zhihu.com/api/v4/search/top_search | 数据源 | 用 `curl` 模拟后端请求；返回 JSON | 可后端请求；返回热搜词 Top 10；不是问答内容热榜；无稳定 heat | 是（初验，Owner 已确认） | JSON 响应含 `top_search.words[].display_query` | 实现前二次复测 |
+| 2026-06-11 | 知乎：https://www.zhihu.com/api/v4/search/top_search | 数据源接入 | 用 Node `fetch` 二次复测并接入 `server/services/zhihu.js`；请求头包含普通浏览器 User-Agent | 返回 HTTP 200；`top_search.words` 返回 10 条；已解析到 `rank/title/url`，无 `heat` | 是（已接入） | `/api/hot/zhihu?refresh=1` 返回真实知乎热搜词；缓存命中日志含 `[cache hit] hot:zhihu` | 后续继续观察稳定性；失败时走 `stale/error` |
 | 2026-06-08 | B 站：https://api.bilibili.com/x/web-interface/popular?ps=10&pn=1 | 数据源 | 用 `curl` 模拟后端请求；返回 JSON | 可后端请求；返回热门视频列表；不是热搜词榜 | 是（初验，Owner 已确认） | JSON 响应含 `data.list[].title`、`bvid`、`stat.view` | 实现前二次复测；页面文案使用“B 站热门” |
+| 2026-06-11 | B 站：https://api.bilibili.com/x/web-interface/popular?ps=10&pn=1 | 数据源接入 | 用 Node `fetch` 二次复测并接入 `server/services/bilibili.js`；请求头包含普通浏览器 User-Agent | 返回 HTTP 200；`data.list` 返回 10 条；已解析到 `rank/title/url/heat` | 是（已接入） | `/api/hot/bilibili?refresh=1` 返回真实 B 站热门视频；缓存命中日志含 `[cache hit] hot:bilibili` | 后续继续观察稳定性；失败时走 `stale/error` |
 
 
 通用通过标准：

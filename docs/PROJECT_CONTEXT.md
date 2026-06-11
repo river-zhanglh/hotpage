@@ -1,13 +1,18 @@
 # 项目共享上下文
 
-最后更新：2026-06-10
+最后更新：2026-06-11
 
 ## 当前阶段
 
 - `docs/PRD.md` v1.1 已冻结。
 - 需求研究、技术设计和 AI 开发指令已完成当前阶段所需内容。
-- 已初始化前端 Vite + React + TypeScript 基础项目和后端 Express 空壳。
-- 首页卡片网格、`HotCard` 组件和前端 loading、empty、error、stale 状态已用 Mock 数据跑通。
+- 已初始化前端 Vite + React + TypeScript 基础项目和后端 Express 服务。
+- 首页卡片网格、`HotCard` 组件和前端 loading、empty、error、stale 状态已跑通。
+- 已搭建后端聚合 API `GET /api/hot` 和 `GET /api/hot/:source`，前端已切换为请求自建后端 `/api/hot`。
+- Day 15 已完成：微博真实热搜、知乎真实热搜词和 B 站真实热门视频均已接入 adapter；三平台统一经过后端聚合接口和独立缓存层。
+- Day 16 手动测试已完成：三平台展示、标题跳转、排名热度、更新时间、单平台失败、缓存期更新时间、移动端布局、页脚合规、软/硬刷新和后端挂掉不白屏均已验证通过。测试记录见 `docs/qa/day16-manual-test.md`。
+- Day 17 已完成：单平台失败模拟方案、单平台重试、全页重新加载、刷新 loading 反馈和合规页脚已完成。测试与方案记录见 `docs/qa/day17-resilience-compliance.md`。
+- Day 18 已完成：站点 favicon/metadata、卡片 hover/focus 体验、部署前检查表和主路径收尾记录已完成。记录见 `docs/qa/day18-polish-freeze.md`，部署前检查表见 `docs/deployment-checklist.md`。
 
 ## 已确认共识
 
@@ -29,14 +34,15 @@
 
 ## 当前下一步
 
-1. 搭建后端 Mock API `GET /api/hot`。
-2. 将前端数据来源从本地 Mock 切换为自建后端 `/api/hot`。
-3. 保持前端不直连微博、知乎、B 站等上游平台 API。
+1. 进入 Day 19-21：部署缓冲阶段，先按 `docs/deployment-checklist.md` 完成部署前检查。
+2. 继续保持前端不直连微博、知乎、B 站等上游平台 API。
+3. 涉及接口、缓存、数据源或页面状态的修改，需要回归 `docs/qa/day16-manual-test.md`、`docs/qa/day17-resilience-compliance.md` 和 `docs/qa/day18-polish-freeze.md` 中的关键场景。
 
 ## 正式文档导航
 
 - 产品范围和验收标准：`docs/PRD.md`
 - 架构、接口和共享数据模型：`docs/TECH_DESIGN.md`
 - 多 Agent 协作流程：`docs/AI_WORKFLOW.md`
+- 部署前检查：`docs/deployment-checklist.md`
 - 长期决策索引：`docs/decisions/INDEX.md`
 - 任务专属上下文：`tasks/<id>/task.md`

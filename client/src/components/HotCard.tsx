@@ -70,12 +70,53 @@ function formatTime(value: string | null) {
     return '暂无成功记录';
   }
 
-  return new Intl.DateTimeFormat('zh-CN', {
-    month: '2-digit',
-    day: '2-digit',
-    hour: '2-digit',
-    minute: '2-digit',
-  }).format(new Date(value));
+  const updatedTime = new Date(value).getTime();
+
+  if (Number.isNaN(updatedTime)) {
+    return '时间未知';
+  }
+
+  const diffSeconds = Math.max(0, Math.floor((Date.now() - updatedTime) / 1000));
+
+  if (diffSeconds < 60) {
+    return '刚刚';
+  }
+
+  const diffMinutes = Math.floor(diffSeconds / 60);
+
+  if (diffMinutes < 60) {
+    return `${diffMinutes} 分钟前`;
+  }
+
+  const diffHours = Math.floor(diffMinutes / 60);
+
+  if (diffHours < 24) {
+    return `${diffHours} 小时前`;
+  }
+
+  return `${Math.floor(diffHours / 24)} 天前`;
+}
+
+function formatCount(value: string) {
+  const count = Number(value);
+
+  if (!Number.isFinite(count)) {
+    return value;
+  }
+
+  if (count >= 10000) {
+    return `${(count / 10000).toFixed(count >= 100000 ? 0 : 1)}万`;
+  }
+
+  return String(count);
+}
+
+function formatHeat(source: HotSource, heat: string) {
+  if (source === 'bilibili') {
+    return `▶ ${formatCount(heat)}`;
+  }
+
+  return heat;
 }
 
 export function HotCard(props: HotCardProps) {
@@ -118,10 +159,16 @@ export function HotCard(props: HotCardProps) {
               <span className={`rank rank--${item.rank <= 3 ? item.rank : 'default'}`}>
                 {item.rank}
               </span>
-              <a href={item.url} target="_blank" rel="noreferrer">
-                {item.title}
+              <a
+                className="hot-title"
+                data-title={item.title}
+                href={item.url}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span className="hot-title__text">{item.title}</span>
               </a>
-              {item.heat ? <span className="heat">{item.heat}</span> : null}
+              {item.heat ? <span className="heat">{formatHeat(platform.source, item.heat)}</span> : null}
             </li>
           ))}
         </ol>
